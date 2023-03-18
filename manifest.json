@@ -1,0 +1,38 @@
+{
+    "manifest_version": 3,
+    "version": "1",
+    "name": "Demo Credential Manager Extension",
+    "host_permissions": [
+        "http://*/*",
+        "https://*/*"
+    ],
+    "credentials": {
+        "supportedTypes": [
+            "password"
+        ]
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*/*"
+            ],
+            "js": [
+
+                "dist/content-scripts/mock.js",
+                "dist/content-scripts/main.js"
+            ],
+            "run_at": "document_start",
+            "all_frames": true
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "dist/page-scripts/credentials-overrider.js"
+            ],
+            "matches": [
+                "*://*/*"
+            ]
+        }
+    ]
+}
